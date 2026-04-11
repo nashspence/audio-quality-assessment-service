@@ -1,0 +1,4 @@
+/.env
+/test.opus
+/test_person.zip
+__pycache__
