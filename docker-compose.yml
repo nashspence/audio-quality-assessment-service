@@ -1,0 +1,37 @@
+services:
+  quality-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: audio-segment-quality-assessment
+    env_file:
+      - .env
+    environment:
+      SERVICE_PORT: ${SERVICE_PORT:-8000}
+      PREFER_GPU: ${PREFER_GPU:-true}
+      REQUIRE_GPU_FOR_NISQA: ${REQUIRE_GPU_FOR_NISQA:-true}
+      ENABLE_DNSMOS: ${ENABLE_DNSMOS:-false}
+      MODEL_CACHE_DIR: ${MODEL_CACHE_DIR:-/cache}
+      NISQA_BATCH_SIZE: ${NISQA_BATCH_SIZE:-16}
+      WORKSPACE_DIR: /workspace
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility
+    gpus: all
+    ipc: host
+    shm_size: "1gb"
+    ports:
+      - "${SERVICE_PORT:-8000}:8000"
+    volumes:
+      - quality-model-cache:/cache
+      - .:/workspace:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 15s
+    restart: unless-stopped
+
+volumes:
+  quality-model-cache:
