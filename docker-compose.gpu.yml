@@ -1,0 +1,5 @@
+services:
+  api:
+    gpus: all
+    environment:
+      USE_OPTIONAL_GPU_MODELS: "true"

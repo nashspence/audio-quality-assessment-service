@@ -1,4 +1,7 @@
-/.env
+.env
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
 /test.opus
-/test_person.zip
-__pycache__
+examples/smoke-sample.wav
