@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: audio-segment-quality-assessment
+    container_name: audio-quality-assessment-service
     env_file:
       - .env
     environment:

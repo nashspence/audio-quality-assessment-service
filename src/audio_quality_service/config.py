@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     )
 
     schema_version: str = "v1"
-    service_name: str = "audio-segment-quality-assessment"
+    service_name: str = "audio-quality-assessment-service"
     host: str = "0.0.0.0"
     port: int = 8000
     log_level: str = "info"

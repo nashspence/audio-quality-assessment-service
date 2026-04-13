@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd /workspaces/audio-segment-quality-assessment
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$(cd "${SCRIPT_DIR}/.." && pwd)"
 bash scripts/smoke_test.sh
