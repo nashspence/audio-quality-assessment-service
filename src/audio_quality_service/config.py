@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     log_level: str = "info"
 
     workspace_dir: Path = Path("/workspace")
-    model_cache_dir: Path = Path("/cache")
+    model_cache_dir: Path = Path("/models/cache")
     temp_dir: Path = Path("/tmp/audio-quality-service")
 
     prefer_gpu: bool = True

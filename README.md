@@ -16,7 +16,7 @@ Both POST endpoints accept JSON with `schema_version: "v1"` and an `audio` objec
 docker compose up --build
 ```
 
-The service binds to `http://localhost:8000` by default. Required quality-model artifacts are downloaded to the cache volume on startup if missing. Health only becomes ready after NISQA, optional DNSMOS, and the API are fully loaded.
+The service binds to `http://localhost:8000` by default. Required quality-model artifacts are downloaded to the repo-local `./.cache/models` directory on startup if missing. Health only becomes ready after NISQA, optional DNSMOS, and the API are fully loaded.
 
 The container is pinned to a Blackwell-capable PyTorch wheel stack: `torch 2.9.1`, `torchvision 0.24.1`, and `torchaudio 2.9.1` from the official `cu130` index. With the default `.env` values, NISQA is expected to load on `cuda:0`; if CUDA is unavailable, `/health` stays unready instead of silently falling back to CPU.
 
